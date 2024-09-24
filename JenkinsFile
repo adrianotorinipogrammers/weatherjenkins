@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                // Comando para construir o projeto
+                sh 'echo "Construindo o projeto..."'
+                // Adicione aqui os comandos de build específicos do seu projeto
+            }
+        }
+    }
+
+    post {
+        always {
+            // Ações que sempre serão executadas
+            echo 'Pipeline concluído.'
+        }
+        success {
+            // Notificação de sucesso
+            echo 'Pipeline concluído com sucesso!'
+        }
+        failure {
+            // Notificação de falha
+            echo 'Pipeline falhou.'
+        }
+    }
+}
