@@ -2,10 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
-            }
+    stage ('Git Checkout') {
+  steps {
+      git branch: 'main', , url: 'https://github.com/adrianotorinipogrammers/weatherjenkins.git'
+    }
+  }
+
+
         }
     }
-}
+
