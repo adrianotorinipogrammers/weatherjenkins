@@ -1,29 +1,5 @@
 pipeline {
     agent any
-
-    stages {
-        stage('Checkout') {
-            steps {
-                // Clona o repositório
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/adrianotorinipogrammers/weatherjenkins.git']]])
-
-               // git 'https://github.com/adrianotorinipogrammers/weatherjenkins.git'
-            }
-        }
-       stage('Restore') {
-            steps {
-                // Comando para restaurar os pacotes
-                sh 'dotnet restore'
-            }
-        }
-        stage('Build') {
-            steps {
-                // Comando para construir o projeto
-                sh 'dotnet build --configuration Release'
-            }
-        }
-    }
-
     post {
         always {
             // Ações que sempre serão executadas
