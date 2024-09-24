@@ -5,7 +5,9 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clona o repositório
-                git 'https://github.com/adrianotorinipogrammers/weatherjenkins.git'
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/adrianotorinipogrammers/weatherjenkins.git']]])
+
+               // git 'https://github.com/adrianotorinipogrammers/weatherjenkins.git'
             }
         }
        stage('Restore') {
