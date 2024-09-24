@@ -10,4 +10,19 @@ pipeline {
             }
         }
     }
+
+    post {
+        always {
+            // Ações que sempre serão executadas
+            echo 'Pipeline concluído.'
+        }
+        success {
+            // Notificação de sucesso
+            echo 'Pipeline concluído com sucesso!'
+        }
+        failure {
+            // Notificação de falha
+            echo 'Pipeline falhou.'
+        }
+    }
 }
