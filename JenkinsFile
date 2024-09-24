@@ -2,8 +2,23 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout') {
+            steps {
+                // Clona o repositório
+                git 'https://github.com/adrianotorinipogrammers/weatherjenkins.git'
+            }
+        }
+       stage('Restore') {
+            steps {
+                // Comando para restaurar os pacotes
+                sh 'dotnet restore'
+            }
+        }
         stage('Build') {
-            echo 'Teste construção pipeline'
+            steps {
+                // Comando para construir o projeto
+                sh 'dotnet build --configuration Release'
+            }
         }
     }
 
