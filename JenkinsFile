@@ -3,11 +3,7 @@ pipeline {
 
     stages {
         stage('Build') {
-            steps {
-                // Comando para construir o projeto
-                sh 'echo "Construindo o projeto..."'
-                // Adicione aqui os comandos de build específicos do seu projeto
-            }
+            echo 'Teste construção pipeline'
         }
     }
 
