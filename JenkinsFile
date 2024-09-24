@@ -1,23 +1,20 @@
 pipeline {
-    agent any
-
-//stage ('Clean workspace') {
-//  steps {
-//    cleanWs()
-//  }
-//}
+agent any
     stages {
-      stage ('Git Checkout') {
-        steps {
-            git branch: 'main', url: 'https://github.com/adrianotorinipogrammers/weatherjenkins.git'
+        stage ('Clean workspace') {
+            steps {
+                cleanWs()
           }
-        }
     }
-
-stage('Restore packages') {
-  steps {
-    bat "dotnet restore ${workspace}\\weatherjenkins\\weatherjenkins.sln"
-  }
+    stage ('Git Checkout') {
+         steps {
+             git branch: 'main', url: 'https://github.com/adrianotorinipogrammers/weatherjenkins.git'
+           }
+         }
+    }
+    stage('Restore packages') {
+      steps {
+        bat "dotnet restore ${workspace}\\weatherjenkins\\weatherjenkins.sln"
+      }
+   }
 }
-}
-
